@@ -1,0 +1,22 @@
+doctype strict
+html
+  head
+    title Hash Split Test Demo - #{title}
+    block styles
+      link(rel='stylesheet' type='text/css' href='css/styles.css')
+    block scripts
+  body
+    nav.site-menu
+      ul
+        li
+          a(href='/') Home
+        if user
+          li
+            a(href='/logout') Logout
+        else
+          li
+            a(href='/login') Login
+          li
+            a(href='/register') Register
+
+    block content

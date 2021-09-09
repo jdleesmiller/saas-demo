@@ -1,0 +1,30 @@
+extends layout.pug
+
+block content
+  h1 Register
+
+  ul
+    each error in errors || []
+      li= error
+
+  form(action='/register' method='POST')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    p
+      label(for='username') Email:
+      input(
+        name='username'
+        type='email'
+        value=email
+        required
+        minlength=User.EMAIL_SCHEMA.minLength
+        maxlength=User.EMAIL_SCHEMA.maxLength)
+    p
+      label(for='password') Password:
+      input(
+        name='password'
+        type='password'
+        required
+        minlength=User.PASSWORD_SCHEMA.minLength
+        maxlength=User.PASSWORD_SCHEMA.maxLength)
+    p
+      input(type='submit' value='Register')

@@ -1,0 +1,11 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "mocha": true
+  },
+  "extends": ["standard", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2018
+  }
+}

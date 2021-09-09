@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content
+  h1 Demo App
+
+  if user
+    h2 Hello #{user.email} (#{user.id})
+  else
+    h2 Not Logged In

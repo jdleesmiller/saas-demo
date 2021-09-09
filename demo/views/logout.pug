@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+  h1 Logging out&hellip;
+
+  form(action='/logout' method='POST' name='logout')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    input(type='submit' value='Logout')
+
+  script.
+    window.addEventListener('DOMContentLoaded', (event) => {
+      document.forms.logout.submit()
+    })

@@ -1,0 +1,21 @@
+nav.site-menu ul {
+  list-style-type: none;
+  text-align: right;
+}
+
+nav.site-menu ul li {
+  display: inline-block;
+  padding-right: 1em;
+}
+
+p > label {
+  display: block;
+}
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:invalid {
+  box-shadow: none;
+}
