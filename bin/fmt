@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec kustomize cfg fmt base overlays

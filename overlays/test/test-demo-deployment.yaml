@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-demo
+  labels:
+    app: test-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-demo
+  template:
+    metadata:
+      labels:
+        app: test-demo
+    spec:
+      containers:
+        - name: test-demo
+          image: demo
+          env:
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secrets
+                  key: SESSION_SECRET
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: PORT
+            - name: PGUSER
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: PGUSER
+            - name: PGDATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: test-demo-config
+                  key: PGDATABASE
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secrets
+                  key: PGPASSWORD

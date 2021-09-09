@@ -1,0 +1,26 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: hash-split-test-demo
+build:
+  artifacts:
+    - image: demo
+      context: demo
+      docker:
+        dockerfile: Dockerfile
+        target: development
+      sync:
+        infer:
+          - '**/*.js'
+          - 'views/**/*.pug'
+deploy:
+  kustomize:
+    paths:
+      - overlays/postgres
+      - overlays/dev
+      - overlays/test
+portForward:
+  - resourceType: service
+    resourceName: demo
+    namespace: default
+    port: 8080

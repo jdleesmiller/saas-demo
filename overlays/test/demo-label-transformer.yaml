@@ -1,0 +1,22 @@
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: demo-label-transformer
+labels:
+  app: test-demo
+fieldSpecs:
+  - path: metadata/labels
+    create: false
+    kind: Deployment
+  - path: spec/selector/matchLabels
+    create: false
+    kind: Deployment
+  - path: spec/template/metadata/labels
+    create: false
+    kind: Deployment
+  - path: metadata/labels
+    create: false
+    kind: Service
+  - path: spec/selector
+    create: false
+    kind: Service
